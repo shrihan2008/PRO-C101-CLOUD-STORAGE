@@ -10,17 +10,8 @@ class TransferData:
         for root, dirs, files in os.walk(file_from):
             relative_path=os.path.relpath(local_path,file_from)
             dropbox_path=os.path.join(file_to,relative_path)
-
-            with open(file_from, 'rb') as f:
-                 dbx.files_upload(f.read(), file_to)
-                   
-           
-
-
-        
-            
-
-
+            with open(local_path, 'rb') as f: 
+                dbx.files_upload(f.read(), dropbox_path, mode=WriteMode('overwrite'))
 def main():
     access_token='sl.BLT02ZXHufcjddZs8Pan9yNx_fX8yhPD0AlNP_7USexVvUtid-81j7RkrUci_ontu9uoBZWcZJQfT0oI3wR2A8SglTuN3NeqdXPYmwIaXKgiBRiR3Ak1yzfPqO6gbzcLKj3dWhU'
     
